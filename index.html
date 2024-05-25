@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background-color: hsl(0, 0%, 10%);
+            }
+            hr {
+                border: 2px solid hsl(0, 0%, 50%);
+            }
+
+            h1 {
+                margin: 10px;
+
+                color: hsl(0, 0%, 90%);
+            }
+            h3 {
+                margin: 10px;
+
+                color: hsl(0, 0%, 90%);
+            }
+            label {
+                margin: 10px;
+
+                color: hsl(0, 0%, 90%);
+                font-weight: bold;
+            }
+            input {
+                margin: 10px;
+                padding: 5px;
+
+                background-color: hsl(0, 0%, 20%);
+                border: 1px solid hsl(0, 0%, 70%);
+                border-radius: 5px;
+
+                color: hsl(0, 0%, 90%);
+            }
+            button {
+                width: 50px;
+
+                margin: 10px;
+                padding: 5px;
+
+                background-color: hsl(0, 0%, 20%);
+                border: 1px solid hsl(0, 0%, 70%);
+                border-radius: 5px;
+
+                color: hsl(0, 0%, 90%);
+
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: hsl(0, 0%, 30%);
+            }
+            #container_result {
+                width: 90vw;
+
+                margin: 10px;
+                padding: 10px;
+
+                background-color: hsl(0, 0%, 20%);
+                border: 1px solid hsl(0, 0%, 70%);
+
+                color: hsl(0, 0%, 90%);
+                word-wrap: break-word;
+                text-align: justify;
+            }
+        </style>
+    </head>
+        <h1>피보나치 수열 생성기</h1>
+        <label for="num1">첫번째 수</label>
+        <input type="number" id="num1" placeholder="첫번째 수" value="0">
+        <br>
+
+        <label for="num2">두번째 수</label>
+        <input type="number" id="num2" placeholder="두번째 수" value="1">
+        <br>
+
+        <label for="l">길이</label>
+        <input type="number" id="l" placeholder="길이" value="10">
+        <br><br>
+
+        <button onclick="generate(document.getElementById('l').value)">생성</button>
+        <hr>
+
+        <h3>결과</h3>
+        <div id="container_result"></div>
+
+
+
+        <script>
+            function generate(l){
+                var n1 = parseInt(document.getElementById('num1').value);
+                var n2 = parseInt(document.getElementById('num2').value);
+                var container_result = document.getElementById('container_result');
+                var result = [];
+                var imsi = 0;
+        
+                for(var i = 0; i < l; i++){
+                    result.push(n1);
+                    imsi = n1 + n2;
+                    n1 = n2;
+                    n2 = imsi;
+                }
+        
+                let output = '';
+                result.forEach((num, index) => {
+                    output += `<ruby>${num}<rt>${index + 1}</rt></ruby>&nbsp;&nbsp;&nbsp;`;
+                });
+        
+                container_result.innerHTML = output;
+            }
+        </script>                    
+    </body>
+</html>
