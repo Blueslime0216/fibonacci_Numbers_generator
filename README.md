@@ -1,0 +1,1 @@
+https://fngenerator.vercel.app/
